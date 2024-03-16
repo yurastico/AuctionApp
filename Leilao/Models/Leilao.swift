@@ -21,6 +21,9 @@ class Leilao {
     }
     
     func propoe(lance:Lance) {
-        lances?.append(lance)
+        guard let listaDeLances = lances else { return }
+        if listaDeLances.isEmpty || listaDeLances.last?.usuario != lance.usuario {
+            lances?.append(lance)
+        }
     }
 }

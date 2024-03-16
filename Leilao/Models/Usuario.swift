@@ -18,3 +18,11 @@ class Usuario {
         self.nome = nome
     }
 }
+
+extension Usuario: Equatable {
+    static func == (lhs: Usuario, rhs: Usuario) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    
+}
