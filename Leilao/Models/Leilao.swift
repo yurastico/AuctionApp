@@ -22,8 +22,13 @@ class Leilao {
     
     func propoe(lance:Lance) {
         guard let listaDeLances = lances else { return }
-        if listaDeLances.isEmpty || listaDeLances.last?.usuario != lance.usuario {
+        if listaDeLances.isEmpty || ultimoLanceDato(listaDeLances).usuario != lance.usuario {
             lances?.append(lance)
         }
     }
+    
+    private func ultimoLanceDato(_ lances: [Lance]) -> Lance {
+        return lances[lances.count - 1]
+    }
+    
 }
