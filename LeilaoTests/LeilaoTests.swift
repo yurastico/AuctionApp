@@ -33,4 +33,24 @@ class LeilaoTests: XCTestCase {
         }
     }
     
+    func testDeveReceberUmLance() {
+        let leilao = Leilao(descricao: "playstation 5")
+        XCTAssertEqual(1, leilao.lances?.count)
+        XCTAssertEqual(2000, leilao.lances?.first?.valor)
+        
+    }
+    
+    func testDeveReceberVariosLances() {
+        let leilao = Leilao(descricao: "macbook pro 16")
+        let leticia = Usuario(nome: "leticia")
+        leilao.propoe(lance: Lance(leticia, 2000))
+        
+        let diego = Usuario(nome: "diego")
+        leilao.propoe(lance: Lance(diego, 3000))
+        
+        XCTAssertEqual(2, leilao.lances?.count)
+        XCTAssertEqual(2000, leilao.lances?.first?.valor)
+        XCTAssertEqual(3000, leilao.lances?[1].valor)
+    }
+    
 }
